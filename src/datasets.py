@@ -8,13 +8,13 @@ from utils import get_label_mask, set_class_values
 from torch.utils.data import Dataset, DataLoader
 
 def get_images(root_path):
-    train_images = glob.glob(f"{root_path}/train_images/*")
+    train_images = glob.glob(f"{root_path}/split_train_dataset/train/images/ship/*")
     train_images.sort()
-    train_masks = glob.glob(f"{root_path}/train_masks/*")
+    train_masks = glob.glob(f"{root_path}/split_train_dataset/train/masks/ship/*")
     train_masks.sort()
-    valid_images = glob.glob(f"{root_path}/valid_images/*")
+    valid_images = glob.glob(f"{root_path}/split_train_dataset/valid/images/ship/*")
     valid_images.sort()
-    valid_masks = glob.glob(f"{root_path}/valid_masks/*")
+    valid_masks = glob.glob(f"{root_path}/split_train_dataset/valid/masks/ship/*")
     valid_masks.sort()
 
     return train_images, train_masks, valid_images, valid_masks
@@ -76,8 +76,7 @@ class SegmentationDataset(Dataset):
         image = image / 255.0
         mask = cv2.imread(self.mask_paths[index], cv2.IMREAD_COLOR)
         mask = cv2.cvtColor(mask, cv2.COLOR_BGR2RGB).astype('float32')
-
-        # Make all instances of person 255 pixel value and background 0.
+        
         im = mask > 0
         mask[im] = 255
         mask[np.logical_not(im)] = 0
