@@ -142,7 +142,7 @@ if __name__ == '__main__':
             f"Train Epoch mIOU: {train_epoch_miou:4f}"
         )
         print(
-            f"Valid Epoch Loss: {valid_epoch_loss:.4f},", 
+            f"Valid Epoch Loss: {valid_epoch_loss:.4f},",
             f"Valid Epoch PixAcc: {valid_epoch_pixacc:.4f}",
             f"Valid Epoch mIOU: {valid_epoch_miou:4f}"
         )

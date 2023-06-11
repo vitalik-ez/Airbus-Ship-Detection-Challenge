@@ -4,6 +4,7 @@ from tqdm import tqdm
 from utils import draw_translucent_seg_maps
 from metrics import IOUEval
 
+
 def train(
     model,
     train_dataset,
@@ -29,21 +30,16 @@ def train(
         optimizer.zero_grad()
         outputs = model(data)
 
-        ##### BATCH-WISE LOSS #####
         loss = criterion(outputs, target)
         train_running_loss += loss.item()
-        ###########################
 
-        ##### BACKPROPAGATION AND PARAMETER UPDATION #####
         loss.backward()
         optimizer.step()
-        ##################################################
 
         iou_eval.addBatch(outputs.max(1)[1].data, target.data)
         
-    ##### PER EPOCH LOSS #####
+
     train_loss = train_running_loss / counter
-    ##########################
     overall_acc, per_class_acc, per_class_iu, mIOU = iou_eval.getMetric()
     return train_loss, overall_acc, mIOU
 
@@ -87,15 +83,13 @@ def validate(
                     label_colors_list,
                 )
 
-            ##### BATCH-WISE LOSS #####
+
             loss = criterion(outputs, target)
             valid_running_loss += loss.item()
-            ###########################
 
             iou_eval.addBatch(outputs.max(1)[1].data, target.data)
         
-    ##### PER EPOCH LOSS #####
+
     valid_loss = valid_running_loss / counter
-    ##########################
     overall_acc, per_class_acc, per_class_iu, mIOU = iou_eval.getMetric()
     return valid_loss, overall_acc, mIOU
