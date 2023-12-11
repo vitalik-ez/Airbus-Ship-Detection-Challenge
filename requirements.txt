@@ -1,3 +1,5 @@
-torch==2.0.0
-albumentations==1.3.1
-gdown
+numpy==1.24.4
+pandas==2.0.3
+segmentation-models-pytorch @ git+https://github.com/qubvel/segmentation_models.pytorch@6db76a1106426ac5b55f39fba68168f3bccae7f8
+torch==2.0.1
+torchvision==0.15.2
