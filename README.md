@@ -14,9 +14,9 @@ Dataset Adaptation: The model is fine-tuned on the Airbus Ship Detection dataset
 Training and Evaluation: We employ various data augmentation techniques and preprocessing strategies to optimize the model's performance. The evaluation is conducted using standard segmentation metrics, ensuring the model's reliability and accuracy.  
 
 ## Results from the trained model at epoch 18
-![alt text](./output/1.jpg "Title")
-![alt text](./output/2.jpg "Title")
-![alt text](./output/3.jpg "Title")
+![alt text](./output/result_epoch_93/df648f2f4.jpg "Title")
+![alt text](./output/result_epoch_93/3a2c9351a.jpg "Title")
+![alt text](./output/result_epoch_93/00c3db267.jpg "Title")
 
 ## Installation:
 ```bash
