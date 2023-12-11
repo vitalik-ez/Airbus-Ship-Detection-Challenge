@@ -62,10 +62,7 @@ def main():
 
     ship = ShipSegmentation(model_path=model_path, device=device)
 
-
-    #image_path = "./Airbus_Ship_Detection_splited_dataset/val/0c6d913bf.jpg"
-
-    images = glob.glob("./Airbus_Ship_Detection_splited_dataset/val/*")
+    images = glob.glob("./Airbus_Ship_Detection_splited_dataset/test/*")
     image_path = random.choice(images)
 
     bgr_image = cv2.imread(image_path)
@@ -74,10 +71,7 @@ def main():
     predicted_mask = ship.predict(rgb_image)
     predicted_mask = cv2.cvtColor(predicted_mask, cv2.COLOR_GRAY2BGR)
 
-    ground_truth_mask = cv2.imread(image_path.replace("val", "valannot"))
-
-    cv2.imwrite("predicted_mask.jpg", predicted_mask)
-    cv2.imwrite("result.png", np.hstack((ground_truth_mask, bgr_image, predicted_mask)))
+    cv2.imwrite("./output/3.jpg", np.hstack((bgr_image, predicted_mask)))
 
 
 
